@@ -3,7 +3,7 @@ import { ErrorsContext } from '../../context';
 import Avatar from '../Avatar';
 import StyledRow from './row.style';
 import { fetchData } from './../../api';
-import { API_URL, CORS_URL } from '../../constant';
+import { API_URL, CORS_URL, currency_symbols } from '../../constant';
 
 const Contact = ({ contact }) => {
     const [deals, setDeals] = React.useState(0);
@@ -22,7 +22,7 @@ const Contact = ({ contact }) => {
                 const tagsResponse = await fetchData(`${API_URL}/contacts/${id}/contactTags`);
 
                 tagsResponse.contactTags.forEach(async (cTag) => {
-                    const tag = await fetchData(cTag.links.tag);
+                    const tag = await fetchData(`${CORS_URL}${cTag.links.tag}`);
 
                     if (!isCanceled) setTags(prev => [...prev, tag.tag.tag]);
                 })
@@ -37,7 +37,7 @@ const Contact = ({ contact }) => {
                         totalValue += Number(deal.value) * 0.74;
                     }
 
-                    if (!isCanceled) setValue(totalValue);
+                    if (!isCanceled) setValue(Math.floor(totalValue));
                 });
 
                 const geoIps = response.geoIps.lenngth > 0 ? `${response.geoIps[0].city}, ${response.geoIps[0].state}, ${response.geoIps[0].country}` : '';
@@ -67,12 +67,12 @@ const Contact = ({ contact }) => {
                     <span className="ml-1">{firstName} {lastName}</span>
                 </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>{currency_symbols.usd}{value}</td>
+            <td>{location}</td>
+            <td>{deals.length}</td>
+            <td>{tags.join(',')}</td>
         </StyledRow>
-    ), [contact])
+    ), [deals, tags, location, value, email, firstName, lastName])
 }
 
 export default Contact;

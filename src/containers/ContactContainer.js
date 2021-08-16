@@ -28,12 +28,13 @@ const ContactContainer = () => {
     return () => isCanceled = true;
   }, []);
 
-  return (
-    <>
+  return React.useMemo(() => contacts.length === 0 ?
+    <Loader text="Loading Contact Data ..." /> :
+    (
       <ContactTable>
         <ContactTable.THead>
           <tr>
-            <th>Contact Name</th>
+            <th scope="col">Contact Name</th>
             <th>Total Value</th>
             <th>Location</th>
             <th>Deals</th>
@@ -47,9 +48,7 @@ const ContactContainer = () => {
             )))}
         </ContactTable.TBody>
       </ContactTable>
-      {contacts.length === 0 && <Loader text="Loading Contact Data ..." />}
-    </>
-  )
+    ), [contacts])
 };
 
 export default ContactContainer;

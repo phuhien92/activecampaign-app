@@ -20,7 +20,7 @@ const StyledTable = styled.table`
     th {
       color: inherit;
       vertical-align: middle;
-      padding: 6px 13px;
+      padding: 4px 13px;
       font-weight: 600;
       border-bottom: 2px solid var(--border-color);
       text-align: left;

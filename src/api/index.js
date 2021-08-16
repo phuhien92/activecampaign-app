@@ -1,5 +1,5 @@
 import Axios from "axios";
-import { API_TOKEN, API_URL, CORS_URL } from "../constant";
+import { API_TOKEN, API_URL } from "../constant";
 
 const authRequestInterceptor = (config) => {
   config.headers.Accept = 'application/json';
@@ -8,7 +8,7 @@ const authRequestInterceptor = (config) => {
 }
 
 export const axios = Axios.create({
-  baseURL: CORS_URL
+  baseURL: ''
 });
 
 axios.interceptors.request.use(authRequestInterceptor);
@@ -23,10 +23,10 @@ axios.interceptors.response.use(
   }
 )
 
-export const fetchContacts = (limit = 10, page = 1) => {
+export const fetchContacts = (limit = 5, page = 1) => {
   return axios.get(`${API_URL}/contacts?limit=${limit}&offset=${(page - 1) * limit}`);
 };
 
 export const fetchData = (url) => {
-  return axios.get('/' + url);
+  return axios.get(url);
 }
