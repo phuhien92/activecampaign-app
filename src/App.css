@@ -1,0 +1,22 @@
+body {
+  font-family: ibm plex sans,franklin gothic,itc franklin gothic,helvetica,arial,sans-serif!important;
+}
+
+body, p {
+  color: #1f2129;
+}
+
+body * {
+  box-sizing: border-box;
+}
+:root {
+  --color-default: #1f2129;
+  --color-primary: #356ae6;
+  --color-inverse: #fff;
+  --border-color: #dfe2e5;
+  --table-row-color: #f6f8fa;
+  --color-red-100: #FEE2E2;
+  --color-red-200: #FCA5A5;
+  --color-red-500: #EF4444;
+  --font-semibold: 600;
+}
