@@ -26,15 +26,16 @@ const ContactContainer = () => {
     })();
 
     return () => isCanceled = true;
-  }, []);
+  }, [setError]);
 
-  return React.useMemo(() => contacts.length === 0 ?
+  return (contacts.length === 0 ?
     <Loader text="Loading Contact Data ..." /> :
     (
       <ContactTable>
         <ContactTable.THead>
           <tr>
-            <th scope="col">Contact Name</th>
+            <th scope="col"><input type="checkbox" className="input-checkbox" /></th>
+            <th>Contact Name</th>
             <th>Total Value</th>
             <th>Location</th>
             <th>Deals</th>
@@ -48,7 +49,7 @@ const ContactContainer = () => {
             )))}
         </ContactTable.TBody>
       </ContactTable>
-    ), [contacts])
+    ))
 };
 
 export default ContactContainer;

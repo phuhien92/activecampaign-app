@@ -18,12 +18,11 @@ axios.interceptors.response.use(
   },
   (error) => {
     let message = error.response?.data?.message || error.message;
-    //message += `. If error code is 403, please click the "Request emporary access to the demo server" button in this link: https://cors-anywhere.herokuapp.com/corsdemo`;
     return Promise.reject(message);
   }
 )
 
-export const fetchContacts = (limit = 5, page = 1) => {
+export const fetchContacts = (limit = 3, page = 1) => {
   return axios.get(`${API_URL}/contacts?limit=${limit}&offset=${(page - 1) * limit}`);
 };
 

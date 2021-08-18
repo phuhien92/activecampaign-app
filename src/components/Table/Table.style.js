@@ -12,6 +12,7 @@ const StyledTable = styled.table`
   .ml-1 {
     margin-left: 5px;
   }
+
   thead {
     vertical-align: bottom;
     tr {

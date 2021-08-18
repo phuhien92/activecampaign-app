@@ -1,6 +1,6 @@
 import React from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import Container from '../components/Styles/Container';
+import Container from '../components/Container';
 import Alert from './../components/Alert';
 
 const ErrorFallBack = () => {

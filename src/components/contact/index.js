@@ -54,10 +54,11 @@ const Contact = ({ contact }) => {
         })();
 
         return () => isCanceled = true;
-    }, []);
+    }, [error, id, setError, value]);
 
-    return React.useMemo(() => (
+    return (
         <StyledRow>
+            <td><input type="checkbox" className="input-checkbox" /></td>
             <td className="text-blue font-weight-semibold">
                 <div className="center-align">
                     <Avatar
@@ -67,12 +68,12 @@ const Contact = ({ contact }) => {
                     <span className="ml-1">{firstName} {lastName}</span>
                 </div>
             </td>
-            <td>{currency_symbols.usd}{value}</td>
+            <td>{currency_symbols.usd}{value.toLocaleString('en-US', { minimumFractionDigits: 2 })}</td>
             <td>{location}</td>
             <td>{deals.length}</td>
             <td>{tags.join(',')}</td>
         </StyledRow>
-    ), [deals, tags, location, value, email, firstName, lastName])
+    )
 }
 
 export default Contact;
